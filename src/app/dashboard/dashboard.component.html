@@ -1,0 +1,14 @@
+<div class="container" *ngIf="same_date_diaries.length">
+  <h3>〇年前の今日</h3>
+  <div class="card-group">
+    <app-thumbnail *ngFor="let diary of same_date_diaries" [diary]="diary"
+                   [image]="'http://localhost:8000/api/image/diary/'+diary.date" [size]="[16.18, 10]"></app-thumbnail>
+  </div>
+</div>
+<div class="container">
+  <h3 class="text-dark">日記</h3>
+  <div class="card-group">
+    <app-thumbnail *ngFor="let diary of diaries" [diary]="diary"
+                   [image]="'http://localhost:8000/api/image/diary/'+diary.date" [size]="[16.18, 10]"></app-thumbnail>
+  </div>
+</div>
