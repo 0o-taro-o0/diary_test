@@ -1,0 +1,8 @@
+<div class="container">
+  <h1>{{diary.title}}</h1>
+  <p>{{diary.date}} {{diary.start_time}}~{{diary.end_time}} {{diary.weather}}</p>
+  <div *ngFor="let d of diary_text.elements">
+<!--    <h{{d}}>-->
+    <p>{{d.data.text}}</p>
+  </div>
+</div>

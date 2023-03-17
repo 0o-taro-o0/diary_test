@@ -1,7 +1,6 @@
 import {Injectable} from '@angular/core';
 import {HttpClient, HttpHeaders} from "@angular/common/http";
 import {Diary} from "../diary";
-import {catchError, Observable} from "rxjs";
 
 @Injectable({
   providedIn: 'root'
@@ -37,7 +36,7 @@ export class DiaryService {
   }
 
   delete(date: string) {
-
+    return this.httpClient.delete<Diary>(`${this.api_url}diary/${date}/`);
   }
 
   list({range = '', year=0, month=0, day=0} = {}) {

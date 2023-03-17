@@ -7,3 +7,17 @@ export interface Diary {
   text: string;
 
 }
+
+export interface DiaryText {
+  elements: [{
+    type: string;
+    data: {
+      text?: string;
+      level?: number;
+      style?: string
+      items?: [string];
+      image_id?: string;
+      caption?: string;
+    }
+  }]
+}

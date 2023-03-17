@@ -2,15 +2,16 @@ import {LOCALE_ID, NgModule} from '@angular/core';
 import {BrowserModule} from '@angular/platform-browser';
 
 import {AppComponent} from './app.component';
-import {DashboardComponent} from './dashboard/dashboard.component';
+import {DashboardComponent} from './components/dashboard/dashboard.component';
 import {AppRoutingModule} from './app-routing.module';
-import {ThumbnailComponent} from './dashboard/thumbnail/thumbnail.component';
+import {ThumbnailComponent} from './components/dashboard/thumbnail/thumbnail.component';
 import {HttpClientModule} from "@angular/common/http";
 import {registerLocaleData} from "@angular/common";
 import localeJa from "@angular/common/locales/ja"
 import {DiaryService} from "./services/diary.service";
 import {ImageService} from "./services/image.service";
-import { EditorjsComponent } from './editorjs/editorjs.component';
+import { EditorjsComponent } from './components/editorjs/editorjs.component';
+import { ViewerComponent } from './components/viewer/viewer.component';
 
 registerLocaleData(localeJa, 'ja-JP')
 
@@ -19,7 +20,8 @@ registerLocaleData(localeJa, 'ja-JP')
     AppComponent,
     DashboardComponent,
     ThumbnailComponent,
-    EditorjsComponent
+    EditorjsComponent,
+    ViewerComponent
   ],
   imports: [
     BrowserModule,

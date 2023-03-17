@@ -1,6 +1,6 @@
 import {Component, Input, SimpleChanges} from '@angular/core';
-import {Diary} from "../../diary";
-import {ApiService} from "../../api.service";
+import {Diary} from "../../../diary";
+import {ApiService} from "../../../api.service";
 
 @Component({
   selector: 'app-thumbnail',

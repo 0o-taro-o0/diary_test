@@ -1,7 +1,7 @@
 import {Component, Inject} from '@angular/core';
-import {Diary} from "../diary";
-import {DiaryService} from "../services/diary.service";
-import {ImageService} from "../services/image.service";
+import {Diary} from "../../diary";
+import {DiaryService} from "../../services/diary.service";
+import {ImageService} from "../../services/image.service";
 
 @Component({
   selector: 'app-dashboard',
