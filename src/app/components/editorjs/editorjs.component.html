@@ -1,10 +1,19 @@
 <div class="container text-center">
-  <h1><input type="text" name="title" id="title_filed" class="text-center border-0" placeholder="タイトル" [value]="diary.title"></h1>
-  <input type="date" name="date" id="date_field" class="mx-1 mb-1 border-0" placeholder="日付" [value]="diary.date">
-  <input type="time" name="start_time" id="start_time_field" class="mx-1 mb-1 border-0" placeholder="start" [value]="diary.start_time">
-  ~
-  <input type="time" name="end_time" id="end_time_field" class="mx-1 mb-1 border-0" placeholder="end" [value]="diary.end_time">
-  <input type="text" name="weather" id="weather_field" class="mx-1 mb-1 border-0" placeholder="天候" [value]="diary.weather">
+  <form #editorForm="ngForm" (ngSubmit)="onSave()">
+    <h1><input type="text" name="title" id="title_filed" class="text-center border-0" placeholder="タイトル"
+               [(ngModel)]="diary.title"></h1>
+    <input type="date" name="date" id="date_field" class="mx-1 mb-1 border-0" placeholder="日付"
+           [(ngModel)]="diary.date">
+    <input type="time" name="start_time" id="start_time_field" class="mx-1 mb-1 border-0" placeholder="start"
+           [(ngModel)]="diary.start_time">
+    ~
+    <input type="time" name="end_time" id="end_time_field" class="mx-1 mb-1 border-0" placeholder="end"
+           [(ngModel)]="diary.end_time">
+    <input type="text" name="weather" id="weather_field" class="mx-1 mb-1 border-0" placeholder="天候"
+           [(ngModel)]="diary.weather">
+  </form>
 </div>
 <div id="editor-js" class="border border-primary rounded container shadow"></div>
-<button (click)="onSave()">Save</button>
+<div class="container text-center my-4">
+  <button class="btn btn-primary" (click)="onSave()">保存</button>
+</div>

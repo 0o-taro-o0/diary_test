@@ -12,6 +12,8 @@ import {DiaryService} from "./services/diary.service";
 import {ImageService} from "./services/image.service";
 import { EditorjsComponent } from './components/editorjs/editorjs.component';
 import { ViewerComponent } from './components/viewer/viewer.component';
+import { ViewerContentComponent } from './components/viewer/viewer-content/viewer-content.component';
+import {FormsModule} from "@angular/forms";
 
 registerLocaleData(localeJa, 'ja-JP')
 
@@ -21,13 +23,14 @@ registerLocaleData(localeJa, 'ja-JP')
     DashboardComponent,
     ThumbnailComponent,
     EditorjsComponent,
-    ViewerComponent
+    ViewerComponent,
+    ViewerContentComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
-
+    FormsModule,
   ],
   providers: [{provide: LOCALE_ID, useValue: 'ja-JP'}, DiaryService, ImageService],
   bootstrap: [AppComponent]

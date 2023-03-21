@@ -8,16 +8,17 @@ export interface Diary {
 
 }
 
-export interface DiaryText {
-  elements: [{
-    type: string;
-    data: {
-      text?: string;
-      level?: number;
-      style?: string
-      items?: [string];
-      image_id?: string;
-      caption?: string;
-    }
-  }]
-}
+// export interface DiaryText {
+//   elements: DiaryTextBlock[];
+// }
+// export interface DiaryTextBlock {
+//   type: string;
+//   data: {
+//     text?: string;
+//     level?: number;
+//     style?: string
+//     items?: [string];
+//     image_id?: string;
+//     caption?: string;
+//   }
+// }

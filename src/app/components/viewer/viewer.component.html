@@ -1,8 +1,12 @@
-<div class="container">
+<div class="container shadow p-4">
   <h1>{{diary.title}}</h1>
-  <p>{{diary.date}} {{diary.start_time}}~{{diary.end_time}} {{diary.weather}}</p>
-  <div *ngFor="let d of diary_text.elements">
-<!--    <h{{d}}>-->
-    <p>{{d.data.text}}</p>
-  </div>
+  <p>{{diary.date | date}} {{diary.start_time.slice( 0, -3 )}} ~ {{diary.end_time.slice( 0, -3 )}} <br>天候：{{diary.weather}}</p>
+  <ng-container *ngFor="let block of editorjsOutput.blocks">
+    <app-viewer-content [block]="block"></app-viewer-content>
+  </ng-container>
+</div>
+<div class="container text-center my-4">
+  <a href="editor/{{diary.date}}">
+    <button class="btn btn-outline-primary">編集</button>
+  </a>
 </div>

@@ -1,8 +1,8 @@
 import {Component, Injectable} from '@angular/core';
 import EditorJS from "@editorjs/editorjs";
 import {DiaryService} from "../../services/diary.service";
-import {Diary, DiaryText} from "../../diary";
-import {ActivatedRoute} from "@angular/router";
+import {Diary} from "../../diary";
+import {ActivatedRoute, Route, Router} from "@angular/router";
 import {EditorjsService} from "../../services/editorjs.service";
 import {EditorjsData} from "../../editorjs-data";
 
@@ -13,7 +13,12 @@ import {EditorjsData} from "../../editorjs-data";
   styleUrls: ['./editorjs.component.css']
 })
 export class EditorjsComponent {
-  constructor(private diaryService: DiaryService, private route: ActivatedRoute, private editorjsService: EditorjsService) {
+  constructor(
+    private diaryService: DiaryService,
+    private route: ActivatedRoute,
+    private editorjsService: EditorjsService,
+    private router: Router,
+  ) {
   }
   diary: Diary = <Diary>{
     date: '',
@@ -44,24 +49,30 @@ export class EditorjsComponent {
     this.editorjsService.editor
       .save()
       .then((outputData: EditorjsData) => {
-        console.log(outputData)
-        // this.diary.text = JSON.stringify(this.editorjsService.exportDiaryText(outputData))
-        // if (this.urlDate != '') {
-        //   this.diaryService.put(this.diary).subscribe((response)=>{
-        //     console.log(response)
-        //   });
-        // } else {
-        //   this.diaryService.post(this.diary).subscribe((response)=>{
-        //     console.log(response)
-        //   });
-        // }
+        this.diary.text = JSON.stringify(outputData)
+        console.log(this.diary.text)
+        if (this.urlDate != '') {
+          this.diaryService.put(this.diary).subscribe((response)=>{
+            console.log(response)
+            this.router.navigate([`/viewer/${this.diary.date}`])
+          }, (error)=>{
+            alert('failed to put data')
+          });
+        } else {
+          this.diaryService.post(this.diary).subscribe((response)=>{
+            console.log(response)
+            this.router.navigate([`/viewer/${this.diary.date}`])
+          }, (error)=>{
+            alert('failed to post data')
+          });
+        }
       })
       .catch((error: Object) => {
         console.log('Saving failed: ', error);
       });
   }
   onLoad(diary: Diary) {
-    this.editorjsService.editor.render(this.editorjsService.importDiaryText(JSON.parse(diary.text) as DiaryText))
+    this.editorjsService.editor.render(JSON.parse(diary.text))
   }
 
 

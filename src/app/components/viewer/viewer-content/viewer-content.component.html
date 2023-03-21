@@ -1,0 +1,30 @@
+<ng-container [ngSwitch]="block.type">
+  <p *ngSwitchCase="'paragraph'">{{block.data.text}}</p>
+  <figure *ngSwitchCase="'image'" class="text-center">
+    <img src="{{block.data.file?.url}}" alt="{{block.data.caption}}" class="rounded"/>
+    <figcaption>{{block.data.caption}}</figcaption>
+  </figure>
+
+  <ng-container *ngSwitchCase="'list'">
+    <ng-container *ngIf="block.data.style == 'ordered'">
+      <ol>
+        <li *ngFor="let item of block.data.items">{{item}}</li>
+      </ol>
+    </ng-container>
+    <ng-container *ngIf="block.data.style == 'unordered'">
+      <ul>
+        <li *ngFor="let item of block.data.items">{{item}}</li>
+      </ul>
+    </ng-container>
+  </ng-container>
+  <ng-container *ngSwitchCase="'header'">
+    <ng-container [ngSwitch]="block.data.level">
+      <h1 *ngSwitchCase="1">{{block.data.text}}</h1>
+      <h2 *ngSwitchCase="2">{{block.data.text}}</h2>
+      <h3 *ngSwitchCase="3">{{block.data.text}}</h3>
+      <h4 *ngSwitchCase="4">{{block.data.text}}</h4>
+      <h5 *ngSwitchCase="5">{{block.data.text}}</h5>
+      <h6 *ngSwitchCase="6">{{block.data.text}}</h6>
+    </ng-container>
+  </ng-container>
+</ng-container>
